@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
       },
     };
     try {
-      // 여러 페이지의 데이터를 저장할 배열, allmovies->moives 배열로 넘어감
+      // 여러 페이지의 데이터를 저장할 배열, allmovies->moives 배열로 넘어감!!
       let allMovies = [];
 
       // 추가 페이지 정보를 로드하기 위한 for 루프
@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const response = await fetch(url, options);
         const data = await response.json();
 
-        // 각 페이지의 영화 데이터를 allMovies 배열에 추가
+        // 각 페이지의 영화 데이터를 allMovies 배열에 추가!!
         allMovies = allMovies.concat(data.results);
       }
 
