@@ -51,8 +51,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // 클릭 이벤트 리스너 추가
       movieElement.addEventListener("click", function () {
-        const movieId = this.getAttribute("data-id");
-        alert("해당 영화의 ID는" + "'" + movieId + "'" + "입니다!"); // 팝업창으로 영화 ID 출력
+        // const movieId = this.getAttribute("data-id");
+        // alert("해당 영화의 ID는" + "'" + movieId + "'" + "입니다!"); // 팝업창으로 영화 ID 출력
+        window.location.href = "/moreinfo.html";
       });
     });
   }
