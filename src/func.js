@@ -1,5 +1,5 @@
 let movies = []; // API에서 가져온 영화 데이터를 저장할 배열 movies 전역 변수로 선언하여 다른 함수들도 접근 가능하도록 함
-//najiji test2222 test 3
+
 document.addEventListener("DOMContentLoaded", function () {
   const scrollContainer = document.getElementById("movies-container");
 
@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
       },
     };
     try {
-      // 여러 페이지의 데이터를 저장할 배열, allmovies->moives 배열로 넘어감!!
+      // 여러 페이지의 데이터를 저장할 배열, allmovies->moives 배열로 넘어감
       let allMovies = [];
 
       // 추가 페이지 정보를 로드하기 위한 for 루프
@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const response = await fetch(url, options);
         const data = await response.json();
 
-        // 각 페이지의 영화 데이터를 allMovies 배열에 추가!!
+        // 각 페이지의 영화 데이터를 allMovies 배열에 추가
         allMovies = allMovies.concat(data.results);
       }
 
@@ -40,7 +40,8 @@ document.addEventListener("DOMContentLoaded", function () {
     movies.forEach((movie) => {
       const movieElement = document.createElement("div");
       movieElement.classList.add("movie-card");
-      movieElement.setAttribute("data-id", movie.id); // 영화 ID를 data-id 속성으로 추가
+      //id alert 제거
+      movieElement.setAttribute("data-id", movie.id); // data-id 속성 추가
       movieElement.innerHTML = `
                 <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title} Poster">
                 <h3>${movie.title}</h3>
@@ -51,10 +52,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // 클릭 이벤트 리스너 추가
       movieElement.addEventListener("click", function () {
-        // const movieId = this.getAttribute("data-id");
-        // alert("해당 영화의 ID는" + "'" + movieId + "'" + "입니다!"); // 팝업창으로 영화 ID 출력
-        window.location.href = "/moreinfo.html";
+        const id = this.getAttribute("data-id"); // data-id 속성을 사용
+        window.location.href = `test.html?id=${id}`;
       });
+      //설명= window.location.href - href 속성 설정을 통해 widnow 브라우저의 창으로 이동합니다.
+      // test.html?id=${movide.id} - test.html 임시로 만든 상세 페이지 이름입니다.
+      //?id=${moive.id} - url의 쿼리 스트링 부분으로, movide.id의 파라미터값을 통해 영화의 id 값을 쿼리 스트링으로 포함시킵니다.
+      //예를 들어 move.id가 110이라고 하면 url은 test.html?id=110이 됩니다.
     });
   }
 
