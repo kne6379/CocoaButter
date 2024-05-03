@@ -20,7 +20,24 @@ form.addEventListener('submit', function(event) {
                     //   리뷰 : ${textInput.value}
                       
 ///
+//로컬스토리지 연습
+//한번에 나오게
+const newReview = {
+    name:name,
+    movie:movie,
+    text:text
+};
+localStorage.setItem('작성리뷰',JSON.stringify(newReview));
 
+//각각 나오게
+// const reviewName = {name:name};
+// localStorage.setItem('user', JSON.stringify(reviewName));
+// const reviewMovie = {movie:movie};
+// localStorage.setItem('movie', JSON.stringify(reviewMovie));
+// const reviewText = {text:text};
+// localStorage.setItem('review', JSON.stringify(reviewText));
+
+console.log(localStorage);
 // 리뷰 내용 추가
 const reviewElement = document.createElement('p');
 reviewElement.textContent = textInput.value;
@@ -37,8 +54,7 @@ delButton.textContent = '삭제';
 newComment.appendChild(delButton);
 
 // 생성된 댓글 요소를 리뷰 목록에 추가
-textInput.appendChild(newComment);
-
+// textInput.appendChild(newComment);
 
 ///
   //console.log(newComment);
@@ -46,11 +62,6 @@ textInput.appendChild(newComment);
 commentsContainer.append(newComment);
   // 추가 작업 수행 (예: 서버로 데이터 전송)
 });
-
-//로컬스토리지 연습
-const obj = {nameInput:'$(#text)'};
-localStorage.setItem('user', JSON.stringify(obj));
-console.log(localStorage);
 
 for (let i = 0; i < localStorage.length; i++) {
     const key = localStorage.key(i);
@@ -61,8 +72,18 @@ for (let i = 0; i < localStorage.length; i++) {
   }
 
   // 배열 저장 (JSON 문자열로 변환 필요)
-const items = ['apple', 'banana', 'orange'];
-localStorage.setItem('items', JSON.stringify(items));
+// const items = ['apple', 'banana', 'orange'];
+// localStorage.setItem('items', JSON.stringify(items));
+//로컬저장화면 : 키 items , 값 []안 내용
+
+// const data = {
+//     items: items
+//   };
+//   // JSON 문자열로 변환
+//   const jsonData = JSON.stringify(data);
+//   // localStorage에 저장
+//   localStorage.setItem('myData', jsonData);
+
   //const localStorage.setItem('key', JSON.stringify(key));
   //객체나 배열은 벨류값에 JSON.stringify(user)
   //localStorage.setItem('key', 'value'); // 문자열 저장
