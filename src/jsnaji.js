@@ -21,3 +21,18 @@ form.addEventListener('submit', function(event) {
 commentsContainer.append(newComment);
   // 추가 작업 수행 (예: 서버로 데이터 전송)
 });
+
+// $("#btn").click(async function() {
+//     let nameInput = $('#nameInput').val();
+//     let movieInput = $('#movieInput').val();
+//     let textInput = $('#textInput').val();
+
+// let doc = {
+//     'nameInput' : nameInput,
+//     'movieInput' : movieInput,
+//     'textInput' : textInput
+// }
+// await AddDoc((),doc);
+// //alert("저장완료");
+// //window.lacation.reloda();
+// })
