@@ -63,5 +63,28 @@
   
   }
   .delBtn {
-  background-color: rgb(104, 92, 89);
+  background-color: rgb(255, 255, 255);
+  }
+  .reviewDiv {
+    background-color: rgb(181, 187, 255);
+    width: 900px;
+    border-radius: 10px;
+    margin: 20px auto 10px auto;
+  }
+  .p {
+    width: 850px;
+    margin: 5px auto 2px auto;
+    padding: 10px;
+  }
+  .p2 {
+    
+    margin: 2px 0 2px 30px;
+    padding: 10px;
+  }
+  .formControl {
+    width: 800px;
+    border-radius: 5px;      
+  }
+  .author {
+    background-color: green;
   }

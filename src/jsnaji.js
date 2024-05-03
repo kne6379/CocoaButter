@@ -12,10 +12,35 @@ form.addEventListener('submit', function(event) {
   // 입력된 값 처리
   console.log('작성자 :', name, '/ 영화명 :', movie, '/ 내용 : ',text);
  
-  const newComment = document.createElement("li");
+  const newComment = document.createElement("reviewDiv");
   //const newName = document.createElement("b");
-  newComment.append( `${nameInput.value} - ${movieInput.value} - ${textInput.value}`);
-  
+  newComment.append(`작성자 : ${nameInput.value}
+                      영화이름 : ${movieInput.value}
+                    `);  //배열로?
+                    //   리뷰 : ${textInput.value}
+                      
+///
+
+// 리뷰 내용 추가
+const reviewElement = document.createElement('p');
+reviewElement.textContent = textInput.value;
+newComment.appendChild(reviewElement);
+
+//수정버튼추가
+const editButton = document.createElement('button');
+editButton.textContent = '수정';
+newComment.appendChild(editButton);
+
+//삭제버튼 추가?
+const delButton = document.createElement('button');
+delButton.textContent = '삭제';
+newComment.appendChild(delButton);
+
+// 생성된 댓글 요소를 리뷰 목록에 추가
+textInput.appendChild(newComment);
+
+
+///
   //console.log(newComment);
   const commentsContainer = document.querySelector("#comments");
 commentsContainer.append(newComment);
@@ -23,9 +48,9 @@ commentsContainer.append(newComment);
 });
 
 //로컬스토리지 연습
-// const obj = {nameInput:'$(#text)'};
-// localStorage.setItem('user', JSON.stringify(obj));
-// console.log(localStorage);
+const obj = {nameInput:'$(#text)'};
+localStorage.setItem('user', JSON.stringify(obj));
+console.log(localStorage);
 
 for (let i = 0; i < localStorage.length; i++) {
     const key = localStorage.key(i);
@@ -34,28 +59,46 @@ for (let i = 0; i < localStorage.length; i++) {
     console.log(`${key}: ${value}`);
     
   }
+
+  // 배열 저장 (JSON 문자열로 변환 필요)
+const items = ['apple', 'banana', 'orange'];
+localStorage.setItem('items', JSON.stringify(items));
   //const localStorage.setItem('key', JSON.stringify(key));
   //객체나 배열은 벨류값에 JSON.stringify(user)
   //localStorage.setItem('key', 'value'); // 문자열 저장
 //localStorage.setItem('obj', JSON.stringify({a: 1, b: 2})); // 객체 저장
 
-// const user = {name: 'Alice', moviename: '', JSON.stringify(newComment)};
-// localStorage.setItem('user', JSON.stringify(user));
 
-//수정버튼 구현
-const editBtn = document.querySelector('.editBtn');
-editBtn.addEventListener('click', function() {
-    // 수정 모드로 전환하는 로직
-    toggleEditMode();
-});
-function toggleEditMode() {
-    const contentElement = document.querySelector('.comments');  //ul에 구현된 .. 박스 생성 이후에 이름을 넣어야하나
-    const editForm = document.querySelector('.edit-form');
 
-     // 수정 폼에 기존 내용 채워넣기
-  const titleInput = editForm.querySelector('input[name="title"]');
-  const contentInput = editForm.querySelector('textarea[name="content"]');
+// 로컬스토리지에서 요소과 초기값 가져오기 
+// const valueElement = document.getElementById('value');
+// const editBtn = document.getElementById('editBtn');
 
-  titleInput.value = contentElement.querySelector('h2').textContent;
-  contentInput.value = contentElement.querySelector('p').textContent;
-}
+// 로컬스토리지 초기값 가져오기
+// Get initial value from localStorage
+// const storedValue = localStorage.getItem('myValue') || 'Default Value';
+// 새로운 값 또는 기본값
+
+
+//초기값 랜더링
+ // Render initial value
+// valueElement.textContent = storedValue;
+
+//편집모드기능 전환 
+// function toggleEditMode() {
+//     const isEditing = valueElement.contentEditable;
+//     valueElement.contentEditable = !isEditing;
+//     if (!isEditing) {
+//       valueElement.focus();
+//     }
+//   }
+
+//버튼 리스너 편집
+//editBtn.addEventListener('click', toggleEditMode);
+
+//편집된 값 로컬스토리지에 저장
+// valueElement.addEventListener('blur', () => {
+//     valueElement.contentEditable = false;
+//     const newValue = valueElement.textContent;
+//     localStorage.setItem('myValue', newValue);
+//   });
