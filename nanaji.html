@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./cssnaji.css">
+    <script src="./jsnaji.js" type="module"></script>
+</head>
+<body>
+    <div class="form">
+        <form id="myForm">
+            <div class="titleName">
+                <h3>영화리뷰</h3>
+            </div>
+            <div id="box">
+                <input type="text" id="nameInput" class="nameInput" placeholder="이름 입력">
+                <input type="text" id="movieInput" class="movieInput" placeholder="영화이름 입력">
+                <input type="text" id="numInput" class="numInput" placeholder="비밀번호">
+                <div>
+                    <input type="text" id="textInput" class="textInput" placeholder="리뷰 입력">
+                    <button type="submit" class="btn">등록</button>
+                </div>
+            </div>
+        </form>
+    
+    </div>
+    <hr>
+
+    <h3>리뷰</h3>
+    <div class="newForm">
+        <ul id="comments">
+            <button type="submit" class="editBtn" hidden>수정</button>
+            <button type="submit" class="delBtn" hidden>삭제</button>
+            <li class="li">
+                <b></b>
+            </li>
+        </ul>
+
+    </div>
+</body>
+
+</html>

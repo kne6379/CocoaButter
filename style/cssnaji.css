@@ -1,0 +1,67 @@
+.form {
+    background-color: rgb(193, 250, 193);
+  }
+  
+  .titleName {
+      
+     width: 100px;
+     
+  }
+  
+  .nameInput {
+    border: 1px;
+    border-radius: 5px;
+    margin: 3px;
+    
+  }
+  
+  .textInput {
+    border: 1px;
+    border-radius: 5px;
+    width: 400px;
+    margin: 3px;
+    
+  }
+  
+  .movieInput {
+      border: 1px;
+    border-radius: 5px;
+    margin: 3px;
+  }
+  
+  .numInput {
+    border: 1px;
+    border-radius: 5px;
+    margin: 3px;
+    
+  }
+  
+  .btn {
+      
+      background-color:white;
+      color:  rgb(95, 95, 95);
+      border-radius: 1px;
+      border-color: transparent;
+      margin: 2px;
+  }
+  
+  .btn:hover {
+     background-color: rgb(95, 95, 95);
+     color: white;
+      
+      border-radius: 1px;
+      margin: 2px;
+  }
+  
+  .newForm {
+    background-color: rgb(255, 239, 193);
+  }
+  
+  
+  .editBtn {
+  background-color: rgb(104, 92, 89);
+  
+  }
+  .delBtn {
+  background-color: rgb(104, 92, 89);
+  }
