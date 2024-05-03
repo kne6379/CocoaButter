@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./style/cssnaji.css">
-    <script src="./src/jsnaji.js" type="module"></script>
 </head>
 <body>
     <div class="form">
@@ -24,21 +23,22 @@
                 </div>
             </div>
         </form>
-    
     </div>
     <hr>
-
-    <h3>리뷰</h3>
-    <div class="newForm">
-        <ul id="comments">
-            <button type="submit" class="editBtn" >수정</button>
-            <button type="submit" class="delBtn" hidden>삭제</button>
-            <li class="li">
-                <b></b>
-            </li>
-        </ul>
-
+    <div class="review-box">
+        <h3>리뷰</h3>
+        <div class="newForm">
+            <button type="button" class="editBtn">수정</button>
+            <button type="button" class="delBtn">삭제</button>
+            <ul id="comments"></ul>
+        </div>
     </div>
+    <script src="./src/testx.js" type="module" defer></script> 
 </body>
-
 </html>
+
+<!--수정사항
+1.hidden 버튼 일단 보이게해놨습니다.
+2.<script src=...js> 위치 옮겨놨습니다
+3.defer 속성 추가, 저도 찾아본건데, <script> 태그가 DOM 요소보다 앞서있다면, DOM을 로드할때 오류가 발생하수 있다고 하더라고요.
+    defer 속성을 사용하면 dom이 완전히 로드된후에 스크립트가 실행된다고 합니다.-->
