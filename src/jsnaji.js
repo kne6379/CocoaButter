@@ -22,17 +22,40 @@ commentsContainer.append(newComment);
   // 추가 작업 수행 (예: 서버로 데이터 전송)
 });
 
-// $("#btn").click(async function() {
-//     let nameInput = $('#nameInput').val();
-//     let movieInput = $('#movieInput').val();
-//     let textInput = $('#textInput').val();
+//로컬스토리지 연습
+// const obj = {nameInput:'$(#text)'};
+// localStorage.setItem('user', JSON.stringify(obj));
+// console.log(localStorage);
 
-// let doc = {
-//     'nameInput' : nameInput,
-//     'movieInput' : movieInput,
-//     'textInput' : textInput
-// }
-// await AddDoc((),doc);
-// //alert("저장완료");
-// //window.lacation.reloda();
-// })
+for (let i = 0; i < localStorage.length; i++) {
+    const key = localStorage.key(i);
+    //get은 객체 읽기
+    const value = localStorage.getItem(key);
+    console.log(`${key}: ${value}`);
+    
+  }
+  //const localStorage.setItem('key', JSON.stringify(key));
+  //객체나 배열은 벨류값에 JSON.stringify(user)
+  //localStorage.setItem('key', 'value'); // 문자열 저장
+//localStorage.setItem('obj', JSON.stringify({a: 1, b: 2})); // 객체 저장
+
+// const user = {name: 'Alice', moviename: '', JSON.stringify(newComment)};
+// localStorage.setItem('user', JSON.stringify(user));
+
+//수정버튼 구현
+const editBtn = document.querySelector('.editBtn');
+editBtn.addEventListener('click', function() {
+    // 수정 모드로 전환하는 로직
+    toggleEditMode();
+});
+function toggleEditMode() {
+    const contentElement = document.querySelector('.comments');  //ul에 구현된 .. 박스 생성 이후에 이름을 넣어야하나
+    const editForm = document.querySelector('.edit-form');
+
+     // 수정 폼에 기존 내용 채워넣기
+  const titleInput = editForm.querySelector('input[name="title"]');
+  const contentInput = editForm.querySelector('textarea[name="content"]');
+
+  titleInput.value = contentElement.querySelector('h2').textContent;
+  contentInput.value = contentElement.querySelector('p').textContent;
+}
