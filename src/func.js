@@ -1,6 +1,6 @@
 import { searchMovies } from "./searchMovies.js";
 import { displayMovies } from "./displaymovies.js";
-import { movies, allMovies } from "./test.js";
+import { cocoaMovieArchive } from "./variable.js";
 
 document.addEventListener("DOMContentLoaded", function () {
   async function fetchMovies() {
@@ -21,12 +21,12 @@ document.addEventListener("DOMContentLoaded", function () {
         const response = await fetch(url, options);
         const data = await response.json();
         // 각 페이지의 영화 데이터를 allMovies 배열에 추가
-        allMovies = allMovies.concat(data.results);
+        cocoaMovieArchive.insertMovieData(data.results);
       }
 
       // 모든 페이지의 데이터를 movies 변수에 저장 후 화면에 표시
-      movies = allMovies;
-      displayMovies(movies);
+      // cocoaMovieArchive.makeMovie(movieCards.allMovies);
+      displayMovies(cocoaMovieArchive.movies);
     } catch (error) {
       console.error("Error fetching data: ", error);
     }

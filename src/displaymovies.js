@@ -1,4 +1,4 @@
-import { scrollContainer } from "./test.js";
+import { scrollContainer } from "./variable.js";
 
 export function displayMovies(movies) {
   //movies 배열의 데이터를 사용하여 scrollcontainer 에 추가함
