@@ -10,7 +10,7 @@ form.addEventListener('submit', function(event) {
   const text = textInput.value;
 
   // 입력된 값 처리
-  //console.log('작성자 :', name, '/ 영화명 :', movie, '/ 내용 : ',text);
+  console.log('작성자 :', name, '/ 영화명 :', movie, '/ 내용 : ',text);
  
   const newComment = document.createElement("li");
   //const newName = document.createElement("b");
