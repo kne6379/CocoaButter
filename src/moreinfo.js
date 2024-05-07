@@ -5,19 +5,24 @@ document.addEventListener("DOMContentLoaded", function () {
   if (movieId) {
     fetchMovieDetails(movieId); // 영화 상세 정보를 불러오는 함수를 호출
   } else {
-    document.getElementById("movie-detail").innerHTML =
+    document.getElementById("movieHtml").innerHTML =
       "<p>영화 ID가 제공되지 않았습니다.</p>";
   }
 });
+/////
 
+//////
 function fetchMovieDetails(id) {
   const apiKey = "683fb5dff8f03f16ca8b6ca00b7e194f"; // TMDB API 키
   fetch(
     `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&language=ko-KR`
   )
     .then((response) => response.json())
+    ///
+
     .then((data) => {
       if (data && !data.errors) {
+       
         const movieDetail = document.getElementById("movie-detail");
         movieDetail.innerHTML = `
                     <h2>${data.title}</h2>
@@ -36,4 +41,4 @@ function fetchMovieDetails(id) {
         "<p>영화 정보를 불러오는데 실패했습니다.</p>";
     });
 }
-import * as mymodule from './cocoaa/src/jsnaji.js';
+//////
