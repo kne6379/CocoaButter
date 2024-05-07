@@ -15,7 +15,5 @@ class MovieArchive {
   }
   // 영화 정보를 입력받아 저장.
 }
-
 const cocoaMovieArchive = new MovieArchive();
-
 export { cocoaMovieArchive, scrollContainer };
