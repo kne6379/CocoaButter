@@ -1,15 +1,16 @@
 import { searchMovies } from "./searchMovies.js";
 import { displayMovies } from "./displaymovies.js";
 import { cocoaMovieArchive } from "./variable.js";
+import { getApiKey } from "./config.js";
 
 document.addEventListener("DOMContentLoaded", function () {
   async function fetchMovies() {
+    const apiKey = getApiKey(); //0507김태현 추가 - api키 가져오기
     const options = {
       method: "GET",
       headers: {
         accept: "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2ODNmYjVkZmY4ZjAzZjE2Y2E4YjZjYTAwYjdlMTk0ZiIsInN1YiI6IjY2MmYwN2YzN2Q1ZGI1MDEyMzNlNjE2NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.mbKz0GDzfwp4rLPHveXZon-Yuu9BIq8gP2A5k_FrB9c",
+        Authorization: `${apiKey}`,   //0507김태현 추가 - api키 로드 방식 변경,config.js추가   
       },
     };
     try {
@@ -29,13 +30,13 @@ document.addEventListener("DOMContentLoaded", function () {
       displayMovies(cocoaMovieArchive.movies);
     } catch (error) {
       console.error("Error fetching data: ", error);
+      alert("데이터를 불러오는 중 문제가 발생했습니다. 잠시 후 다시 시도해주세요."); //0507 김태현 추가 - api 오류 알림창 추가
     }
   }
 
-  document
-    .getElementById("search-button")
-    .addEventListener("click", searchMovies); //엔터키,마우스 클릭시 searchMovies 함수 호출
-  document.getElementById("search-input").addEventListener("keypress", (e) => {
+  document.getElementById("search-button").addEventListener("click", searchMovies);
+  document.getElementById("search-input").addEventListener("keydown", (e) => { //0507 김태현 추가 - keypress 관련 이슈가 몇개 있는거같아서 keydown으로 바꿧습니다.
+    //참고링크:"https://goodteacher.tistory.com/603"
     if (e.key === "Enter") {
       searchMovies();
     }
