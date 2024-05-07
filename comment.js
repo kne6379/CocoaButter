@@ -4,16 +4,19 @@ const passwordRegex =
 
 function checkPassword() {
   const passwordInput = document.getElementById("pass");
-  const form = document.getElementById("form");
+  const form = document.getElementById("myForm");
 
   if (passwordInput.value.length === 0) {
     alert("비밀번호를 입력하세요");
     passwordInput.focus();
+    return false;
   } else if (!passwordRegex.test(passwordInput.value)) {
     alert("비밀번호를 4자리 이상, 대문자나 특수문자 포함하여 입력하세요");
     passwordInput.focus();
+    return false;
   } else {
     alert("댓글 작성이 완료되었습니다.");
+    return true;
   }
 }
 
