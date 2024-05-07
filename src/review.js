@@ -2,6 +2,7 @@ const form = document.getElementById("myForm");
 let reviews = JSON.parse(localStorage.getItem("reviews")) || [];
 //json.parse 문자열을 객체로 변환
 // 폼 제출 이벤트 핸들러
+
 form.addEventListener("submit", function (event) {
   //첫번째 인자:이벤트 유형, 두번째 인자:호출될 콜백함수
   event.preventDefault(); // 기본 동작 방지 (페이지 새로고침 방지)
@@ -43,7 +44,6 @@ window.onload = function () {
     registerDeleteHandler(newComment, reviews, index);
     registerEditHandler(newComment, reviews, index);
   });
-
   // 수정 버튼 클릭 이벤트 핸들러 등록
   registerEditHandlerForAll(reviews);
 };
@@ -143,6 +143,7 @@ function updateReviewElement(index, review) {
     reviewElement.parentNode.replaceChild(newReviewElement, reviewElement);
   }
 }
+
 function registerEditSaveHandler(modal, reviews, index) {
   //updateReviewElement 간접적으로 호출함
   const editSaveButton = modal.querySelector(".editSaveBtn");
