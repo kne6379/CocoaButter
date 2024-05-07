@@ -1,3 +1,4 @@
+export * from './cocoaa/moreinfo.js';
 const form = document.getElementById("myForm");
 let reviews = JSON.parse(localStorage.getItem("reviews")) || [];
   //json.parse 문자열을 객체로 변환
