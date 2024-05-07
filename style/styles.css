@@ -1,7 +1,7 @@
 :root {
-    --bg-html-color:#333;
+    --bg-html-color:#34b1eb;
     --text-color: #ffffff;
-    --intext-color:#fbe6a2;
+    --intext-color:#121111;
 }
 
 .html, body, header, main {
@@ -12,7 +12,7 @@
 }
 
 header {
-    background-color: #333;
+    background-color: #8934eb;
     color: var(--text-color);
     padding: 20px;
     text-align: center;
@@ -20,8 +20,8 @@ header {
 }
 
 header h1 {
-    margin: 20px auto 20px auto;
-    width: 200px;
+    margin: 70px auto 70px auto;
+    width: 1000px;
 }
 
 input[type="text"] {
@@ -33,7 +33,7 @@ input[type="text"] {
 button {
     padding: 10px 20px;
     cursor: pointer;
-    background-color: #556;
+    background-color: #121111;
     color: var(--intext-color);
     border: none;
     border-radius: 5px;
@@ -99,7 +99,7 @@ main {
 
 .movie-card p {
     font-size: 0.7rem;
-    color: #666;
+    color: #121111;
     height: 60px; 
     overflow: hidden;
 }
