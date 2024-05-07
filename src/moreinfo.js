@@ -36,4 +36,3 @@ function fetchMovieDetails(id) {
         "<p>영화 정보를 불러오는데 실패했습니다.</p>";
     });
 }
-import * as mymodule from './cocoaa/src/jsnaji.js';

@@ -1,9 +1,9 @@
-export * from './cocoaa/moreinfo.js';
 const form = document.getElementById("myForm");
 let reviews = JSON.parse(localStorage.getItem("reviews")) || [];
-  //json.parse 문자열을 객체로 변환
+//json.parse 문자열을 객체로 변환
 // 폼 제출 이벤트 핸들러
-form.addEventListener("submit", function (event) {    //첫번째 인자:이벤트 유형, 두번째 인자:호출될 콜백함수
+form.addEventListener("submit", function (event) {
+  //첫번째 인자:이벤트 유형, 두번째 인자:호출될 콜백함수
   event.preventDefault(); // 기본 동작 방지 (페이지 새로고침 방지)
   const nameInput = document.getElementById("nameInput");
   const name = nameInput.value;
@@ -15,7 +15,7 @@ form.addEventListener("submit", function (event) {    //첫번째 인자:이벤�
   // 새로운 리뷰 요소 생성
   const newComment = createReviewElement(name, movie, text);
   const commentsContainer = document.querySelector("#comments");
-  commentsContainer.append(newComment);  //newComment 추가
+  commentsContainer.append(newComment); //newComment 추가
 
   // localStorage에 리뷰 정보 저장
   reviews.push({ name, movie, text });
@@ -34,7 +34,11 @@ window.onload = function () {
 
   const commentsContainer = document.querySelector("#comments");
   reviews.forEach((review, index) => {
-    const newComment = createReviewElement(review.name, review.movie, review.text);
+    const newComment = createReviewElement(
+      review.name,
+      review.movie,
+      review.text
+    );
     commentsContainer.append(newComment);
     registerDeleteHandler(newComment, reviews, index);
     registerEditHandler(newComment, reviews, index);
@@ -128,14 +132,19 @@ function createEditModal(review, index) {
 }
 
 function updateReviewElement(index, review) {
-    const reviewElement = document.querySelectorAll(".review")[index];
-    if (reviewElement) {
-      const newReviewElement = createReviewElement(review.name, review.movie, review.text);
-      newReviewElement.classList.add("review");
-      reviewElement.parentNode.replaceChild(newReviewElement, reviewElement);
-    }
+  const reviewElement = document.querySelectorAll(".review")[index];
+  if (reviewElement) {
+    const newReviewElement = createReviewElement(
+      review.name,
+      review.movie,
+      review.text
+    );
+    newReviewElement.classList.add("review");
+    reviewElement.parentNode.replaceChild(newReviewElement, reviewElement);
+  }
 }
-function registerEditSaveHandler(modal, reviews, index) {   //updateReviewElement 간접적으로 호출함
+function registerEditSaveHandler(modal, reviews, index) {
+  //updateReviewElement 간접적으로 호출함
   const editSaveButton = modal.querySelector(".editSaveBtn");
   editSaveButton.addEventListener("click", () => {
     // 수정된 내용 가져오기
@@ -151,18 +160,17 @@ function registerEditSaveHandler(modal, reviews, index) {   //updateReviewElemen
     };
 
     // 수정된 리뷰 요소를 DOM에 추가
-    if (index >= 0 && index < reviews.length) {  
-        updateReviewElement(index, reviews[index]);
-      }
+    if (index >= 0 && index < reviews.length) {
+      updateReviewElement(index, reviews[index]);
+    }
 
     // localStorage 업데이트
     localStorage.setItem("reviews", JSON.stringify(reviews));
-      window.location.reload();
+    window.location.reload();
     // 모달 창 닫기
     modal.remove();
   });
 }
-
 
 for (let i = 0; i < localStorage.length; i++) {
   const key = localStorage.key(i);
