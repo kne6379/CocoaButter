@@ -13,33 +13,63 @@
     padding: 0;
     font-family: Arial, sans-serif;
 }
+h1 {
+    /* 2번 */
+    font-family: "Poetsen One", sans-serif;
+    font-size: 60px !important;
+    background-color: var(--bg-html-color);
+    color: var(--text-color);
+    padding-top: 20px;
+    /* display: flex;
+    align-items: center; */
+    margin: 20px;
+    
+}
+.mainimg { 
+    background-color: var(--bg-html-color);
+    padding: 10px 0;
+  max-width: 80px;
+  vertical-align: middle;
+
+}
 
 header {
     background-color: var(--bg-html-color);
     color: var(--text-color);
     padding: 20px;
-    text-align: center;
+    text-align: center; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     
 }
-/* 영화검색글씨 */
-header h1 { 
+
+header h2 { 
     
-    font-weight: 700;
-    margin: 50px auto 20px auto;
-    color: var(--text-color);
-    font-size: 40px;
+    font-weight: 500;
+    margin: 20px auto 20px auto;
+    color: var(--intext-color);
+    font-size: 20px;
     width: 200px;
 
 }
-
+.inputDiv {
+   
+    display: flex;
+    justify-content: center;
+    width: 600px;
+}
 input[type="text"] {
     background-color: var(--searchbg-color);
     color:var(--search-color);
     padding: 10px;
     width: 60%;
-    max-width: 300px;
+    max-width: 400px;
    height: 30px;
     border : 2px;
+    
+    text-align: center;
+    /* margin: 0 auto 0 auto; */
 }
 
 /* 검색버튼 */
@@ -123,6 +153,7 @@ main {
     -webkit-line-clamp: 3; /* 0507 김태현 추가 - 3줄만 표시 그뒤내용은 ...으로 표시, hover시 전체 텍스트 출력*/
     overflow: hidden;
     text-overflow: ellipsis;
+    color: var(--search-color);
 }
 
 .movie-card:hover p {
@@ -142,7 +173,8 @@ main {
 
 .movie-card span {
     font-weight: bold;
-    color: #0056b3;
+    /* color: #0056b3; */
+    color: #fbe6a2;
 }
 
 .scroll-container {
@@ -171,3 +203,13 @@ main {
 .trend-scroll-container {
     white-space: nowrap; /*포스터 가로로 정렬*/
 }
+.image-button {
+    cursor: pointer;
+    transition: transform 0.3s;
+  }
+  .image-button:hover {
+    transform: scale(1.1);
+  }
+  .image-button:active {
+    transform: scale(0.9);
+  }

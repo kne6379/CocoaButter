@@ -26,3 +26,8 @@ export function displayMovies(movies) {
     //예를 들어 move.id가 110이라고 하면 url은 test.html?id=110이 됩니다.
   });
 }
+const myImage = document.querySelector('img');
+myImage.style.width = '400px';
+myImage.addEventListener('click', () => {
+  console.log('우리는 코코아버터 - !');
+});
