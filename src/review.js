@@ -11,30 +11,6 @@ const passwordInput = document.getElementById("passwordInput");
 //json.parse 문자열을 객체로 변환
 // 폼 제출 이벤트 핸들러
 
-//0507 김태현 추가 - 새로 작성한 댓글에 대한 핸들러추가 및 수정, 댓글 새로 추가,삭제시 페이지 새로고침 기능추가
-//개인적으로 새로고침으로 동기화시키고싶지않았는데, DOM 동적 동기화를 할려면 코드를 너무 많이 뜯어고쳐야할것 같아서 일단 새로고침으로 해놨습니다.
-form.addEventListener("submit", function (event) {
-  //첫번째 인자:이벤트 유형, 두번째 인자:호출될 콜백함수
-  // 기본 동작 방지 (페이지 새로고침 방지)
-  const name = nameInput.value;
-  const movie = movieInput.value;
-  const text = textInput.value;
-  const password = passwordInput.value;
-  // 새로운 리뷰 요소 생성, 패스워드 생성시 유효성 검사
-  if (createPassword(password)) {
-    const newComment = createReviewElement(name, movie, text, password);
-    const commentsContainer = document.querySelector("#comments");
-    commentsContainer.append(newComment); //newComment 추가
-    // localStorage에 리뷰 정보 저장
-    reviews.push({ name, movie, text, password });
-    localStorage.setItem("reviews", JSON.stringify(reviews));
-    // 삭제 버튼 클릭 이벤트 핸들러 등록
-    registerDeleteHandler(newComment, reviews);
-    // 수정 버튼 클릭 이벤트 핸들러 등록
-    registerEditHandler(newComment, reviews);
-  }
-});
-
 // 페이지 로드 시 localStorage에서 리뷰 정보 불러오기
 window.onload = function () {
   reviews = JSON.parse(localStorage.getItem("reviews")) || [];
@@ -54,6 +30,31 @@ window.onload = function () {
   // 수정 버튼 클릭 이벤트 핸들러 등록
   // registerEditHandlerForAll(reviews);
 };
+
+//0507 김태현 추가 - 새로 작성한 댓글에 대한 핸들러추가 및 수정, 댓글 새로 추가,삭제시 페이지 새로고침 기능추가
+//개인적으로 새로고침으로 동기화시키고싶지않았는데, DOM 동적 동기화를 할려면 코드를 너무 많이 뜯어고쳐야할것 같아서 일단 새로고침으로 해놨습니다.
+form.addEventListener("submit", function (event) {
+  //첫번째 인자:이벤트 유형, 두번째 인자:호출될 콜백함수
+  // 기본 동작 방지 (페이지 새로고침 방지)
+  const name = nameInput.value;
+  const movie = movieInput.value;
+  const text = textInput.value;
+  const password = passwordInput.value;
+  // 새로운 리뷰 요소 생성, 패스워드 생성시 유효성 검사
+  if (createPassword(password)) {
+    const newComment = createReviewElement(name, movie, text, password);
+    const commentsContainer = document.querySelector("#comments");
+    commentsContainer.append(newComment); //newComment 추가
+    // localStorage에 리뷰 정보 저장
+    reviews.push({ name, movie, text, password });
+    localStorage.setItem("reviews", JSON.stringify(reviews));
+    // window.location.reload();
+    // // 삭제 버튼 클릭 이벤트 핸들러 등록
+    // registerDeleteHandler(newComment, reviews);
+    // // 수정 버튼 클릭 이벤트 핸들러 등록
+    // registerEditHandler(newComment, reviews);
+  }
+});
 
 function createReviewElement(name, movie, text) {
   const newComment = document.createElement("Div");
@@ -83,9 +84,6 @@ function registerDeleteHandler(element, reviews, index = null) {
     } else {
       alert("비밀번호를 틀렸습니다.");
     }
-    // localStorage에서 해당 리뷰 정보 삭제
-    // if () {
-    // }
   });
 }
 
@@ -112,6 +110,22 @@ function registerEditHandler(element, reviews, index) {
 //   });
 // }
 
+function createEditModal(review, index) {
+  const modal = document.createElement("div");
+  modal.innerHTML = `
+    <div class="modal">
+      <div class="modalContent">
+        <span class="closeButton">&times;</span>
+        <input type="text" id="editNameInput" value="${review?.name || ""}">
+        <input type="text" id="editMovieInput" value="${review?.movie || ""}">
+        <textarea id="editTextInput">${review?.text || ""}</textarea>
+        <button class="editSaveBtn">완료</button>
+      </div>
+    </div>
+  `;
+  return modal;
+}
+
 function openEditModal(review, index) {
   const modal = createEditModal(review, index);
   document.body.appendChild(modal);
@@ -131,22 +145,6 @@ function closeAllModals() {
   modals.forEach((modal) => {
     modal.remove();
   });
-}
-
-function createEditModal(review, index) {
-  const modal = document.createElement("div");
-  modal.innerHTML = `
-    <div class="modal">
-      <div class="modalContent">
-        <span class="closeButton">&times;</span>
-        <input type="text" id="editNameInput" value="${review?.name || ""}">
-        <input type="text" id="editMovieInput" value="${review?.movie || ""}">
-        <textarea id="editTextInput">${review?.text || ""}</textarea>
-        <button class="editSaveBtn">완료</button>
-      </div>
-    </div>
-  `;
-  return modal;
 }
 
 //0507 김태현 수정
@@ -193,10 +191,10 @@ function registerEditSaveHandler(modal, reviews, index) {
   });
 }
 
-for (let i = 0; i < localStorage.length; i++) {
-  const key = localStorage.key(i);
-  //get은 객체 읽기
-  const value = localStorage.getItem(key);
-  console.log(`${key}: ${value}`);
-}
+// for (let i = 0; i < localStorage.length; i++) {
+//   const key = localStorage.key(i);
+//   //get은 객체 읽기
+//   const value = localStorage.getItem(key);
+//   console.log(`${key}: ${value}`);
+// }
 //

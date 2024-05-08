@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   const urlParams = new URLSearchParams(window.location.search);
   const movieId = urlParams.get("id"); // URL에서 영화 ID 파라미터를 가져옴
+  const pageback = document.getElementById("pageback");
 
   if (movieId) {
     fetchMovieDetails(movieId); // 영화 상세 정보를 불러오는 함수를 호출
@@ -10,7 +11,9 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 /////
-
+pageback.addEventListener("click", () => {
+  history.back();
+});
 //////
 function fetchMovieDetails(id) {
   const apiKey = "683fb5dff8f03f16ca8b6ca00b7e194f"; // TMDB API 키
