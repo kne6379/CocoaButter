@@ -24,18 +24,17 @@
 
   .h3 {
     background-color: var(--bg-form-color);
-    color: #fbe6a2;
-    
+    color: var(--text-color);
 
   }
 .body {
     background-color: var(--bg-form-color);
+    font-size: 20px;
 }
   .nameInput {
     border: 1px;
     border-radius: 5px;
     margin: 3px;
-    
   }
   
   .textInput {
@@ -43,7 +42,7 @@
     border-radius: 5px;
     width: 400px;
     margin: 3px;
-    
+    color: var(--text-color);
   }
   
   .movieInput {
@@ -98,6 +97,7 @@
     width: 850px;
     margin: 5px auto 2px auto;
     padding: 10px;
+    
   }
   .p2 {
     
@@ -109,5 +109,9 @@
     border-radius: 5px;      
   }
   .author {
+    background-color: green;
+  }
+
+  .body>h2 {
     background-color: green;
   }

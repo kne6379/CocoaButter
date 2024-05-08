@@ -7,11 +7,17 @@
    
 }
 
-.html, body, header, main {
+.html, header, main {
     background-color: var(--bg-html-color);
     margin: 0;
     padding: 0;
+
     /* font-family: Arial, sans-serif; */
+    color: var(--text-color);
+}
+body {
+    background-color: var(--bg-html-color);
+    color: var(--text-color);
     font-family: "Jua", sans-serif;
 }
 h1 {
@@ -180,12 +186,14 @@ movie-detail h2 {
     overflow: hidden;
     text-overflow: ellipsis;
     color: var(--search-color);
+    height: 0em;
 }
 
 .movie-card:hover p {
     -webkit-line-clamp: none; /* hover 시 모든 텍스트 표시 */
     height: auto;
     overflow:visible;
+    
 }
 
 .movie-card:hover img {
@@ -238,4 +246,21 @@ movie-detail h2 {
   }
   .image-button:active {
     transform: scale(0.9);
+  }
+
+  .movie-card h2 {
+    background-color: green;
+    color: var(--text-color);
+  }
+
+  h3 {
+    color: var(--text-color);
+    font-family: "Jua", sans-serif;
+    font-size: 20px;
+  }
+  Input {
+    background-color: green;
+  }
+  p {
+    color: aqua;
   }
