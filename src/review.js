@@ -3,9 +3,11 @@ let reviews = JSON.parse(localStorage.getItem("reviews")) || [];
 //json.parse 문자열을 객체로 변환
 // 폼 제출 이벤트 핸들러
 
+//0507 김태현 추가 - 새로 작성한 댓글에 대한 핸들러추가 및 수정, 댓글 새로 추가,삭제시 페이지 새로고침 기능추가
+//개인적으로 새로고침으로 동기화시키고싶지않았는데, DOM 동적 동기화를 할려면 코드를 너무 많이 뜯어고쳐야할것 같아서 일단 새로고침으로 해놨습니다.
 form.addEventListener("submit", function (event) {
   //첫번째 인자:이벤트 유형, 두번째 인자:호출될 콜백함수
-  event.preventDefault(); // 기본 동작 방지 (페이지 새로고침 방지)
+  event.preventDefault(); // 기본 동작 방지 
   const nameInput = document.getElementById("nameInput");
   const name = nameInput.value;
   const movieInput = document.getElementById("movieInput");
@@ -15,18 +17,16 @@ form.addEventListener("submit", function (event) {
 
   // 새로운 리뷰 요소 생성
   const newComment = createReviewElement(name, movie, text);
-  const commentsContainer = document.querySelector("#comments");
+  const commentsContainer = document.querySelector("#comments"); 
   commentsContainer.append(newComment); //newComment 추가
 
   // localStorage에 리뷰 정보 저장
   reviews.push({ name, movie, text });
   localStorage.setItem("reviews", JSON.stringify(reviews));
 
-  // 삭제 버튼 클릭 이벤트 핸들러 등록
-  registerDeleteHandler(newComment, reviews);
-
-  // 수정 버튼 클릭 이벤트 핸들러 등록
-  registerEditHandler(newComment, reviews);
+    // 페이지 새로고침
+    window.location.reload();
+  
 });
 
 // 페이지 로드 시 localStorage에서 리뷰 정보 불러오기
@@ -40,6 +40,7 @@ window.onload = function () {
       review.movie,
       review.text
     );
+    newComment.dataset.index = index; //0507 김태현 추가 - 리뷰에 인덱스 부여
     commentsContainer.append(newComment);
     registerDeleteHandler(newComment, reviews, index);
     registerEditHandler(newComment, reviews, index);
@@ -50,6 +51,7 @@ window.onload = function () {
 
 function createReviewElement(name, movie, text) {
   const newComment = document.createElement("Div");
+  newComment.className = "review"; //0507 김태현 추가 - 'review'클래스 추가
   const reviewInfo = `
 작성자 : ${name}<br>
 영화이름 : ${movie}<br>
@@ -66,19 +68,17 @@ function registerDeleteHandler(element, reviews, index = null) {
   deleteButton.addEventListener("click", () => {
     // 해당 리뷰 요소 삭제
     element.remove();
-
     // localStorage에서 해당 리뷰 정보 삭제
-    if (index !== null) {
-      reviews.splice(index, 1);
-      localStorage.setItem("reviews", JSON.stringify(reviews));
-    }
+    //0507김태현 추가 -index값 null로 되어있는거 변경
+    reviews.splice(index, 1);
+    localStorage.setItem("reviews", JSON.stringify(reviews));
   });
 }
 
 function registerEditHandler(element, reviews, index) {
   const editButton = element.querySelector(".editBtn");
   editButton.addEventListener("click", () => {
-    // 수정 모달 창 열기
+    // 수정 모달 창 열기 
     openEditModal(reviews[index], index);
   });
 }
@@ -131,19 +131,21 @@ function createEditModal(review, index) {
   return modal;
 }
 
+//0507 김태현 수정
 function updateReviewElement(index, review) {
-  const reviewElement = document.querySelectorAll(".review")[index];
-  if (reviewElement) {
+  const reviewElement = document.querySelectorAll(".review");
+  if (reviewElement[index]) {
     const newReviewElement = createReviewElement(
       review.name,
       review.movie,
       review.text
     );
     newReviewElement.classList.add("review");
-    reviewElement.parentNode.replaceChild(newReviewElement, reviewElement);
+    reviewElement[index].parentNode.replaceChild(newReviewElement, reviewElement[index]);
   }
 }
 
+//0507김태현 추가 - 해당 함수에서 수정하고, 데이터에 저장되지 않는것같아서 함수를 조금 바꿨습니다.
 function registerEditSaveHandler(modal, reviews, index) {
   //updateReviewElement 간접적으로 호출함
   const editSaveButton = modal.querySelector(".editSaveBtn");
@@ -152,24 +154,20 @@ function registerEditSaveHandler(modal, reviews, index) {
     const editNameInput = modal.querySelector("#editNameInput");
     const editMovieInput = modal.querySelector("#editMovieInput");
     const editTextInput = modal.querySelector("#editTextInput");
-
+    
+    console.log("수정전:", reviews[index]);
     // 수정된 내용으로 리뷰 정보 업데이트
     reviews[index] = {
       name: editNameInput.value,
       movie: editMovieInput.value,
       text: editTextInput.value,
     };
-
-    // 수정된 리뷰 요소를 DOM에 추가
-    if (index >= 0 && index < reviews.length) {
-      updateReviewElement(index, reviews[index]);
-    }
-
-    // localStorage 업데이트
-    localStorage.setItem("reviews", JSON.stringify(reviews));
-    window.location.reload();
-    // 모달 창 닫기
+    console.log("수정후:", reviews[index]);
+    localStorage.setItem("reviews",JSON.stringify(reviews));
+    updateReviewElement(index, reviews[index]);
     modal.remove();
+
+    console.log("LocalStorage Updated", localStorage.getItem("reviews"));
   });
 }
 
