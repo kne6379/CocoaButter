@@ -1,7 +1,9 @@
 :root {
-    --bg-form-color:#0f0f0e;
-    --text-color: white;
-    --intext-color:#398688;
+    --bg-form-color:#171717;
+    --text-color: #ffffff;
+    --intext-color:#fbe6a2;
+    --search-color:#a2a2a2;
+    --searchbg-color:#000000;
 
 }
 
@@ -23,6 +25,7 @@
   .h3 {
     background-color: var(--bg-form-color);
     color: #fbe6a2;
+    
 
   }
 .body {
