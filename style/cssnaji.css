@@ -49,7 +49,7 @@
   border-radius: 5px;
   margin: 3px;
   width: 400px;
-  box-sizing: border-box;
+  box-sizing: 200%;
 }
 /* .movieInput {
     border: 1px solid #fbe6a2;
@@ -69,7 +69,7 @@
   .textInput {
     border: 1px;
     border-radius: 5px;
-    width: 400px;
+    width: 600px;
     margin: 3px;
     color: var(--text-color);
     box-sizing: border-box;

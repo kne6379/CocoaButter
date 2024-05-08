@@ -287,7 +287,7 @@ text-align: center;
 margin: 15px;
   }
  
-  p {
+  .detail p {
     /* background-color: var(--p-color);
     padding: 3px; */
     color: var(--search-color);
