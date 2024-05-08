@@ -11,6 +11,7 @@
     background-color: var(--bg-form-color);
     color: var(--text-color);
   }
+  /* 영화리뷰이름 포함한 총 div */
   
   .titleName {
     color: var(--text-color);
@@ -19,62 +20,75 @@
      width: 100px;
     font-weight: 200;
     font-size: 20px;
-     
   }
+  /* 영화리뷰 텍스트 */
   /* .hr {border-color: #ffffff;} */
 
-.body {
+/* .body {
     background-color: var(--bg-form-color);
     font-size: 20px;
-}
+} */
 
 .Input {
-    background-color: var(--p-color);
+    background-color:var(--p-color);
     width: 700px;
     padding: 3px;
     margin: 0 auto 10px auto;
     border-radius: 3px;
   }
+
   .nameInput {
     border: 1px;
     border-radius: 5px;
     margin: 3px;
+    box-sizing: border-box;
+    background-color: aqua;
   }
-  
+  .movieInput {
+    border: 2px solid ;
+  border-radius: 5px;
+  margin: 3px;
+  width: 400px;
+  box-sizing: border-box;
+}
+/* .movieInput {
+    border: 1px solid #fbe6a2;
+  border-radius: 5px;
+  margin: 3px;
+  width: 300px;
+  box-sizing: border-box;
+} */
+
+.passInput {
+  border: 1px;
+  border-radius: 5px;
+  margin: 3px;
+  box-sizing: border-box;
+}
+
   .textInput {
     border: 1px;
     border-radius: 5px;
     width: 400px;
     margin: 3px;
     color: var(--text-color);
+    box-sizing: border-box;
   }
   
-  .movieInput {
-      border: 1px;
-    border-radius: 5px;
-    margin: 3px;
-  }
-  
-  .passInput {
-    border: 1px;
-    border-radius: 5px;
-    margin: 3px;
-    
-  }
-  
+ 
   .btn {
       background-color:white;
       color:  rgb(95, 95, 95);
-      border-radius: 1px;
+      border-radius: 3px;
       border-color: transparent;
       margin: 2px;
   }
+  /* 영화리뷰 등록버튼 */
   
   .btn:hover {
      background-color: rgb(95, 95, 95);
      color: white;
-      
-      border-radius: 1px;
+      border-radius: 3px;
       margin: 2px;
   }
 

@@ -276,8 +276,10 @@ movie-detail h2 {
   .detail {
 background-color: var(--bg-html-color);
 padding: 10px;
+text-align: center;
 }
-  .detail h2 {
+ 
+.detail h2 {
 color: var(--intext-color);
 font-size: 60px;
 padding: 5px;
