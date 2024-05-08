@@ -22,7 +22,6 @@ function fetchMovieDetails(id) {
 
     .then((data) => {
       if (data && !data.errors) {
-       
         const movieDetail = document.getElementById("movie-detail");
         movieDetail.innerHTML = `
                     <h2>${data.title}</h2>
@@ -41,4 +40,3 @@ function fetchMovieDetails(id) {
         "<p>영화 정보를 불러오는데 실패했습니다.</p>";
     });
 }
-//////
