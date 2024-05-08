@@ -170,4 +170,24 @@ main {
 
 .trend-scroll-container {
     white-space: nowrap; /*포스터 가로로 정렬*/
+    overflow-x: hidden;
+    position: relative;
+}
+
+.trend-scroll-container .movie-card {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%); /*전체 길이만큼 왼쪽으로 이동*/
+    }
+}
+
+.trend-scroll-container {
+    animation: scroll 60s linear infinite; /*60초 동안 계속해서 애니메이션을 반복*/
 }

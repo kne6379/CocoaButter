@@ -2,6 +2,7 @@ import { searchMovies } from "./searchMovies.js";
 import { displayMovies } from "./displaymovies.js";
 import { cocoaMovieArchive } from "./variable.js";
 import { getApiKey } from "./config.js";
+import { trendMoviesContainer } from './variable.js';
 
 document.addEventListener("DOMContentLoaded", function () {
   async function fetchMovies() {
@@ -43,3 +44,36 @@ document.addEventListener("DOMContentLoaded", function () {
   });
   fetchMovies(); // API 호출하여 데이터 불러오기
 });
+
+
+//0507김태현추가
+
+async function fetchTrendMovies() {
+  const apiKey = getApiKey();
+  const url = `https://api.themoviedb.org/3/trending/movie/week?api_key=${apiKey}&language=en-US`;
+  const options = {
+      method: 'GET',
+      headers: {
+          Accept: 'application/json',
+          Authorization: `${apiKey}`,
+      },
+  };
+
+  try {
+    const response = await fetch(url, options);
+    const data = await response.json();
+    if (data.results && data.results.length > 0) {
+        const container = document.getElementById('trend-movies-container');
+        data.results.forEach(movie => {
+            const movieCard = document.createElement('div');
+            movieCard.className = 'movie-card';
+            movieCard.innerHTML = `<img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title} Poster">`;
+            container.appendChild(movieCard);
+        });
+    } else {
+        console.log('No trending movies found.');
+    }
+} catch (error) {
+    console.error("Error fetching trending movies: ", error);
+}
+}
