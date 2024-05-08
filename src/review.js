@@ -1,5 +1,6 @@
 const form = document.getElementById("myForm");
 let reviews = JSON.parse(localStorage.getItem("reviews")) || [];
+
 //json.parse 문자열을 객체로 변환
 // 폼 제출 이벤트 핸들러
 
