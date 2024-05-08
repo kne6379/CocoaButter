@@ -4,6 +4,7 @@
     --intext-color:#fbe6a2;
     --search-color:#a2a2a2;
     --searchbg-color:#000000;
+    --p-color: #3a3a3a;
    
 }
 
@@ -107,7 +108,7 @@ main .pp {
   border-bottom: 4px solid #fbe6a2;
 }
   
-.p::after {
+.pp::after {
     content: "";
     position: absolute;
     left: 0;
@@ -268,19 +269,28 @@ movie-detail h2 {
     transform: scale(0.9);
   }
 
-  .movie-card h2 {
+  /* .movie-card h2 {
     background-color: green;
-    color: var(--text-color);
+    color: #81f789;
+  } */
+  .detail {
+background-color: var(--bg-html-color);
+padding: 10px;
+}
+  .detail h2 {
+color: var(--intext-color);
+font-size: 60px;
+padding: 5px;
+text-align: center;
+margin: 15px;
   }
-
-  h3 {
-    color: var(--text-color);
-    font-family: "Jua", sans-serif;
-    font-size: 20px;
-  }
-  Input {
-    background-color: green;
-  }
+ 
   p {
-    color: aqua;
+    /* background-color: var(--p-color);
+    padding: 3px; */
+    color: var(--search-color);
+    text-align: center;
+    margin: 5px auto 5px auto;
+    width: 60%;
+    line-height: 1.5;
   }

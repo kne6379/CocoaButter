@@ -4,7 +4,7 @@
     --intext-color:#fbe6a2;
     --search-color:#a2a2a2;
     --searchbg-color:#000000;
-
+    --p-color: #3a3a3a;
 }
 
 .form {
@@ -18,19 +18,23 @@
     margin: 0px auto 0px auto ;
      width: 100px;
     font-weight: 200;
+    font-size: 20px;
      
   }
   /* .hr {border-color: #ffffff;} */
 
-  .h3 {
-    background-color: var(--bg-form-color);
-    color: var(--text-color);
-
-  }
 .body {
     background-color: var(--bg-form-color);
     font-size: 20px;
 }
+
+.Input {
+    background-color: var(--p-color);
+    width: 700px;
+    padding: 3px;
+    margin: 0 auto 10px auto;
+    border-radius: 3px;
+  }
   .nameInput {
     border: 1px;
     border-radius: 5px;
@@ -51,7 +55,7 @@
     margin: 3px;
   }
   
-  .numInput {
+  .passInput {
     border: 1px;
     border-radius: 5px;
     margin: 3px;
@@ -59,7 +63,6 @@
   }
   
   .btn {
-      
       background-color:white;
       color:  rgb(95, 95, 95);
       border-radius: 1px;
@@ -74,24 +77,41 @@
       border-radius: 1px;
       margin: 2px;
   }
-  
+
+  .h3 {
+    width: 90%;
+    background-color: var(--search-color);
+    color: var(--text-color);
+    padding: 15px;
+    margin: 5px auto 5px auto;
+    font-size: 15px;
+/* 리뷰박스   */
+}
+.hName {
+    color: var(--text-color);
+    font-size: 20px;
+    text-align: center;
+}
   .newForm {
-    background-color: rgb(255, 239, 193);
+    background-color:var(--search-color);
+    /* 리뷰내용 */
   }
-  
   
   .editBtn {
   background-color: rgb(255, 255, 255);
-  
+  margin: 5px;
   }
-  .delBtn {
+  /* .delBtn {
   background-color: rgb(255, 255, 255);
-  }
-  .reviewDiv {
+  } */
+  /* .reviewDiv {
     background-color: rgb(181, 187, 255);
     width: 900px;
     border-radius: 10px;
     margin: 20px auto 10px auto;
+  } */
+  hr {
+    border-color: var(--search-color);
   }
   .p {
     width: 850px;
@@ -100,7 +120,7 @@
     
   }
   .p2 {
-    
+    background-color: green;
     margin: 2px 0 2px 30px;
     padding: 10px;
   }
@@ -112,6 +132,5 @@
     background-color: green;
   }
 
-  .body>h2 {
-    background-color: green;
-  }
+
+   
