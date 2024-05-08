@@ -13,14 +13,16 @@ form.addEventListener("submit", function (event) {
   const movie = movieInput.value;
   const textInput = document.getElementById("textInput");
   const text = textInput.value;
+  const passWordInput = document.getElementById("passWordInput");
+  const passWord = passWordInput.value;
 
   // 새로운 리뷰 요소 생성
-  const newComment = createReviewElement(name, movie, text);
+  const newComment = createReviewElement(name, movie, text, passWord);
   const commentsContainer = document.querySelector("#comments");
   commentsContainer.append(newComment); //newComment 추가
 
   // localStorage에 리뷰 정보 저장
-  reviews.push({ name, movie, text });
+  reviews.push({ name, movie, text, passWord });
   localStorage.setItem("reviews", JSON.stringify(reviews));
 
   // 삭제 버튼 클릭 이벤트 핸들러 등록
