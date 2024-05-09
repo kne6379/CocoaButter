@@ -4,31 +4,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>영화 검색 사이트</title>
     <link rel="stylesheet" href="style/reset.css">
     <link rel="stylesheet" href="style/styles.css">
-    <title>영화 검색 사이트</title>
-
-    <script src="src/func.js" type="module"></script>
+    <script src="src/main.js" type="module"></script>
+    <!-- 2번 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poetsen+One&family=Varela+Round&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jua&family=Poetsen+One&family=Varela+Round&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style/styles.css">
 </head>
 
 <body>
     <header>
-        <h1>영화 검색</h1>
-        <input type="text" id="search-input" placeholder="영화 제목을 입력하세요">
-        <button id="search-button">검색</button>
+
+        <h1><img src="assets/image11.png" alt="메인로고" class="mainimg">Cocoa Butter</h1>
+        </div>
+        <h2>Movie Search Service</h2>
+        <div class="inputDiv">
+            <input type="text" id="search-input" placeholder="영화 제목을 입력하세요">
+            <button id="search-button">검색</button>
+        </div>
     </header>
     <main>
+        <p class="pp">오늘의 추천작 </p>
         <div id="movies-container" class="scroll-container">
+            <!-- 기존 영화 컨테이너 -->
+        </div>
 
-            </section>
-    </main>
-
-
-
-    <h5>
-        <div style="float: right;">김태현_xxooxx99@naver.com
-    </h5>
-    </div>
+        <div id="trend-movies-container" class="trend-scroll-container">
+            <!-- 트렌드 영화 컨테이너 -->
+        </div>
 </body>
 
 </html>
