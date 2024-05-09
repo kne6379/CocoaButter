@@ -114,6 +114,22 @@ function registerEditHandler(element, reviews, index) {
   });
 }
 
+function createEditModal(review, index) {
+  const modal = document.createElement("div");
+  modal.innerHTML = `
+    <div class="modal">
+      <div class="modalContent">
+        <span class="closeButton">&times;</span>
+        <input type="text" id="editNameInput" value="${review?.name || ""}">
+        <input type="text" id="editMovieInput" value="${review?.movie || ""}">
+        <textarea id="editTextInput">${review?.text || ""}</textarea>
+        <button class="editSaveBtn">완료</button>
+      </div>
+    </div>
+  `;
+  return modal;
+}
+
 function openEditModal(review, index) {
   closeAllModals(); // 기존에 열려있는 모달이 있으면 닫기 - 중복 문제 해결
 
