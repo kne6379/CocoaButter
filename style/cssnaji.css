@@ -1,14 +1,17 @@
 :root {
-    --bg-form-color:#0f0f0e;
-    --text-color: white;
-    --intext-color:#398688;
-
+    --bg-form-color:#171717;
+    --text-color: #ffffff;
+    --intext-color:#fbe6a2;
+    --search-color:#a2a2a2;
+    --searchbg-color:#000000;
+    --p-color: #3a3a3a;
 }
 
 .form {
     background-color: var(--bg-form-color);
     color: var(--text-color);
   }
+  /* 영화리뷰이름 포함한 총 div */
   
   .titleName {
     color: var(--text-color);
@@ -16,88 +19,122 @@
     margin: 0px auto 0px auto ;
      width: 100px;
     font-weight: 200;
-     
+    font-size: 20px;
   }
+  /* 영화리뷰 텍스트 */
   /* .hr {border-color: #ffffff;} */
 
-  .h3 {
+/* .body {
     background-color: var(--bg-form-color);
-    color: #fbe6a2;
+    font-size: 20px;
+} */
 
+.Input {
+    background-color:var(--p-color);
+    width: 700px;
+    padding: 3px;
+    margin: 0 auto 10px auto;
+    border-radius: 3px;
   }
-.body {
-    background-color: var(--bg-form-color);
-}
+
   .nameInput {
     border: 1px;
     border-radius: 5px;
     margin: 3px;
-    
+    box-sizing: border-box;
+    background-color: aqua;
   }
-  
+  .movieInput {
+    border: 2px solid ;
+  border-radius: 5px;
+  margin: 3px;
+  width: 400px;
+  box-sizing: 200%;
+}
+/* .movieInput {
+    border: 1px solid #fbe6a2;
+  border-radius: 5px;
+  margin: 3px;
+  width: 300px;
+  box-sizing: border-box;
+} */
+
+.passInput {
+  border: 1px;
+  border-radius: 5px;
+  margin: 3px;
+  box-sizing: border-box;
+}
+
   .textInput {
     border: 1px;
     border-radius: 5px;
-    width: 400px;
+    width: 600px;
     margin: 3px;
-    
+    color: var(--text-color);
+    box-sizing: border-box;
   }
   
-  .movieInput {
-      border: 1px;
-    border-radius: 5px;
-    margin: 3px;
-  }
-  
-  .numInput {
-    border: 1px;
-    border-radius: 5px;
-    margin: 3px;
-    
-  }
-  
+ 
   .btn {
-      
       background-color:white;
       color:  rgb(95, 95, 95);
-      border-radius: 1px;
+      border-radius: 3px;
       border-color: transparent;
       margin: 2px;
   }
+  /* 영화리뷰 등록버튼 */
   
   .btn:hover {
      background-color: rgb(95, 95, 95);
      color: white;
-      
-      border-radius: 1px;
+      border-radius: 3px;
       margin: 2px;
   }
-  
+
+  .h3 {
+    width: 90%;
+    background-color: var(--search-color);
+    color: var(--text-color);
+    padding: 15px;
+    margin: 5px auto 5px auto;
+    font-size: 15px;
+/* 리뷰박스   */
+}
+.hName {
+    color: var(--text-color);
+    font-size: 20px;
+    text-align: center;
+}
   .newForm {
-    background-color: rgb(255, 239, 193);
+    background-color:var(--search-color);
+    /* 리뷰내용 */
   }
-  
   
   .editBtn {
   background-color: rgb(255, 255, 255);
-  
+  margin: 5px;
   }
-  .delBtn {
+  /* .delBtn {
   background-color: rgb(255, 255, 255);
-  }
-  .reviewDiv {
+  } */
+  /* .reviewDiv {
     background-color: rgb(181, 187, 255);
     width: 900px;
     border-radius: 10px;
     margin: 20px auto 10px auto;
+  } */
+  hr {
+    border-color: var(--search-color);
   }
   .p {
     width: 850px;
     margin: 5px auto 2px auto;
     padding: 10px;
+    
   }
   .p2 {
-    
+    background-color: green;
     margin: 2px 0 2px 30px;
     padding: 10px;
   }
@@ -108,3 +145,6 @@
   .author {
     background-color: green;
   }
+
+
+   

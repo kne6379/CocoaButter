@@ -23,11 +23,10 @@ form.addEventListener("submit", function (event) {
   // 새로운 리뷰 요소 생성, 패스워드 생성시 유효성 검사
   if (createPassword(password)) {
     // 0508김태현- 새 리뷰 객체 생성
-    const newReview = {name, movie, text, password};
+    const newReview = { name, movie, text, password };
     reviews.push(newReview); //localstorage에 저장할 리뷰 목록에 추가
 
     localStorage.setItem("reviews", JSON.stringify(reviews)); // localstorage 업데이트
-
 
     const newComment = createReviewElement(name, movie, text, password);
     const commentsContainer = document.querySelector("#comments");
@@ -39,10 +38,10 @@ form.addEventListener("submit", function (event) {
     registerEditHandler(newComment, reviews, reviews.length - 1);
 
     // 입력 폼 초기화
-    nameInput.value = '';
-    movieInput.value = '';
-    textInput.value = '';
-    passwordInput.value = '';
+    nameInput.value = "";
+    movieInput.value = "";
+    textInput.value = "";
+    passwordInput.value = "";
   } else {
     alert("비밀번호가 유효하지 않습니다.");
   }
@@ -75,7 +74,6 @@ function createReviewElement(name, movie, text, password, index) {
   newComment.className = "review"; //0507 김태현 추가 - 'review'클래스 추가
   newComment.dataset.index = index;
 
-
   const reviewInfo = `
     작성자 : ${name}<br>
     영화이름 : ${movie}<br>
@@ -100,7 +98,6 @@ function registerDeleteHandler(element, reviews, index) {
     } else {
       alert("비밀번호를 틀렸습니다.");
     }
-
   });
 }
 //수정 새로고침없이 처리
@@ -128,29 +125,29 @@ function openEditModal(review, index) {
   closeButton.addEventListener("click", () => {
     closeAllModals();
   });
-  
+
   registerEditSaveHandler(modal, reviews, index);
 }
-  // 수정 완료 버튼 클릭 이벤트 핸들러
-  function registerEditSaveHandler(modal, reviews, index) {
-    const editSaveButton = modal.querySelector(".editSaveBtn");
-    editSaveButton.addEventListener("click", () => {
-      const editNameInput = modal.querySelector("#editNameInput");
-      const editMovieInput = modal.querySelector("#editMovieInput");
-      const editTextInput = modal.querySelector("#editTextInput");
-  
-      // 수정 리뷰 정보 업데이트
-      reviews[index] = {
-        name: editNameInput.value,
-        movie: editMovieInput.value,
-        text: editTextInput.value,
-        password: reviews[index].password,
-      };
-  
-      localStorage.setItem("reviews", JSON.stringify(reviews)); // localStorage 업데이트
-      updateReviewElement(index, reviews[index]); // DOM 업데이트
-      closeAllModals(); // 모달 닫기
-    });
+// 수정 완료 버튼 클릭 이벤트 핸들러
+function registerEditSaveHandler(modal, reviews, index) {
+  const editSaveButton = modal.querySelector(".editSaveBtn");
+  editSaveButton.addEventListener("click", () => {
+    const editNameInput = modal.querySelector("#editNameInput");
+    const editMovieInput = modal.querySelector("#editMovieInput");
+    const editTextInput = modal.querySelector("#editTextInput");
+
+    // 수정 리뷰 정보 업데이트
+    reviews[index] = {
+      name: editNameInput.value,
+      movie: editMovieInput.value,
+      text: editTextInput.value,
+      password: reviews[index].password,
+    };
+
+    localStorage.setItem("reviews", JSON.stringify(reviews)); // localStorage 업데이트
+    updateReviewElement(index, reviews[index]); // DOM 업데이트
+    closeAllModals(); // 모달 닫기
+  });
 }
 
 function closeAllModals() {
@@ -160,28 +157,11 @@ function closeAllModals() {
   });
 }
 
-function createEditModal(review, index) {
-  const modal = document.createElement("div");
-  modal.innerHTML = `
-    <div class="modal">
-      <div class="modalContent">
-        <span class="closeButton">&times;</span>
-        <input type="text" id="editNameInput" value="${review?.name || ""}">
-        <input type="text" id="editMovieInput" value="${review?.movie || ""}">
-        <textarea id="editTextInput">${review?.text || ""}</textarea>
-        <button class="editSaveBtn">완료</button>
-      </div>
-    </div>
-  `;
-  return modal;
-}
-
 //0507 김태현 수정
 function updateReviewElement(index, review) {
   const reviewElements = document.querySelectorAll(".review");
   //0508 김태현 수정 - update로직 기존리뷰에서 DOM 업데이트로 새리뷰요소로 대체하기
 
-  
   if (reviewElements[index]) {
     const oldReviewElement = reviewElements[index];
 
@@ -195,7 +175,10 @@ function updateReviewElement(index, review) {
     );
 
     // 기존 요소를 새 요소로 교체
-    oldReviewElement.parentNode.replaceChild(newReviewElement, oldReviewElement);
+    oldReviewElement.parentNode.replaceChild(
+      newReviewElement,
+      oldReviewElement
+    );
 
     // 이벤트 핸들러 재연결
     registerDeleteHandler(newReviewElement, reviews, index);
@@ -208,37 +191,37 @@ function updateIndexes() {
   reviewElements.forEach((element, newIndex) => {
     element.dataset.index = newIndex; // 인덱스 업데이트
   });
-//0507김태현 추가 - 해당 함수에서 수정하고, 데이터에 저장되지 않는것같아서 함수를 조금 바꿨습니다.
-// function registerEditSaveHandler(modal, reviews, index) {
-//   //updateReviewElement 간접적으로 호출함
-//   const editSaveButton = modal.querySelector(".editSaveBtn");
-//   editSaveButton.addEventListener("click", () => {
-//     // 수정된 내용 가져오기
-//     const editNameInput = modal.querySelector("#editNameInput");
-//     const editMovieInput = modal.querySelector("#editMovieInput");
-//     const editTextInput = modal.querySelector("#editTextInput");
+  //0507김태현 추가 - 해당 함수에서 수정하고, 데이터에 저장되지 않는것같아서 함수를 조금 바꿨습니다.
+  // function registerEditSaveHandler(modal, reviews, index) {
+  //   //updateReviewElement 간접적으로 호출함
+  //   const editSaveButton = modal.querySelector(".editSaveBtn");
+  //   editSaveButton.addEventListener("click", () => {
+  //     // 수정된 내용 가져오기
+  //     const editNameInput = modal.querySelector("#editNameInput");
+  //     const editMovieInput = modal.querySelector("#editMovieInput");
+  //     const editTextInput = modal.querySelector("#editTextInput");
 
-//     console.log("수정전:", reviews[index]);
-//     // 수정된 내용으로 리뷰 정보 업데이트
-//     reviews[index] = {
-//       name: editNameInput.value,
-//       movie: editMovieInput.value,
-//       text: editTextInput.value,
-//       password: reviews[index].password,
-//     };
-//     console.log("수정후:", reviews[index]);
-//     localStorage.setItem("reviews", JSON.stringify(reviews));
-//     updateReviewElement(index, reviews[index]);
-//     closeAllModals();
-//     window.location.reload();
-//     console.log("LocalStorage Updated", localStorage.getItem("reviews"));
-//   });
-// }
+  //     console.log("수정전:", reviews[index]);
+  //     // 수정된 내용으로 리뷰 정보 업데이트
+  //     reviews[index] = {
+  //       name: editNameInput.value,
+  //       movie: editMovieInput.value,
+  //       text: editTextInput.value,
+  //       password: reviews[index].password,
+  //     };
+  //     console.log("수정후:", reviews[index]);
+  //     localStorage.setItem("reviews", JSON.stringify(reviews));
+  //     updateReviewElement(index, reviews[index]);
+  //     closeAllModals();
+  //     window.location.reload();
+  //     console.log("LocalStorage Updated", localStorage.getItem("reviews"));
+  //   });
+  // }
 
-for (let i = 0; i < localStorage.length; i++) {
-  const key = localStorage.key(i);
-  //get은 객체 읽기
-  const value = localStorage.getItem(key);
-  console.log(`${key}: ${value}`);
-}
+  for (let i = 0; i < localStorage.length; i++) {
+    const key = localStorage.key(i);
+    //get은 객체 읽기
+    const value = localStorage.getItem(key);
+    console.log(`${key}: ${value}`);
+  }
 }
