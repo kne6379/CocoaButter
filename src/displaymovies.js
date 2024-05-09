@@ -11,10 +11,10 @@ export function displayMovies(movies) {
                     <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title} Poster">
                     <h3>${movie.title}</h3>
                     <p>${movie.overview}</p>
-                    <span>평점: ${movie.vote_average}</span>
+                    <span class="rating">평점: ${movie.vote_average}</span> 
                 `;
     scrollContainer.appendChild(movieElement);
-
+    //0507 김태현 추가 -hover시 평점 출력을 제외하기 위해서 평점을 클래스로 지정했습니다.
     // 클릭 이벤트 리스너 추가
     movieElement.addEventListener("click", function () {
       const id = this.getAttribute("data-id"); // data-id 속성을 사용

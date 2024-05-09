@@ -1,0 +1,5 @@
+const API_KEY = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2ODNmYjVkZmY4ZjAzZjE2Y2E4YjZjYTAwYjdlMTk0ZiIsInN1YiI6IjY2MmYwN2YzN2Q1ZGI1MDEyMzNlNjE2NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.mbKz0GDzfwp4rLPHveXZon-Yuu9BIq8gP2A5k_FrB9c';
+
+export function getApiKey() {
+    return API_KEY;
+}
